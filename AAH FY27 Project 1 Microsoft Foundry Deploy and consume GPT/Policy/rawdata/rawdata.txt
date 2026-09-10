@@ -1,0 +1,62 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260910114441
+Username: labvm-2382235\demouser
+RunAs User: labvm-2382235\demouser
+Configuration Name: 
+Machine: labvm-2382235 (Microsoft Windows NT 10.0.20348.0)
+Host Application: C:\Windows\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+Process ID: 9084
+PSVersion: 5.1.20348.2227
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.20348.2227
+BuildVersion: 10.0.20348.2227
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Rbac-Policy\Policy\rawdata\rawdata.txt
+
+PSPath            : Microsoft.PowerShell.Core\FileSystem::C:\Rbac-Policy\Rbac\
+PSParentPath      : Microsoft.PowerShell.Core\FileSystem::C:\Rbac-Policy
+PSChildName       : Rbac
+PSDrive           : C
+PSProvider        : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer     : True
+Name              : Rbac
+FullName          : C:\Rbac-Policy\Rbac
+Parent            : Rbac-Policy
+Exists            : True
+Root              : C:\
+Extension         :
+CreationTime      : 9/10/2026 11:44:41 AM
+CreationTimeUtc   : 9/10/2026 11:44:41 AM
+LastAccessTime    : 9/10/2026 11:44:41 AM
+LastAccessTimeUtc : 9/10/2026 11:44:41 AM
+LastWriteTime     : 9/10/2026 11:44:41 AM
+LastWriteTimeUtc  : 9/10/2026 11:44:41 AM
+Attributes        : Directory
+Mode              : d-----
+BaseName          : Rbac
+Target            : {}
+LinkType          :
+
+=======================================================
+Resource Group Name : contosofoundry-demo-2382235
+=======================================================
+INFO: Loaded Module 'Az.Authorization'
+INFO: Loaded Module 'Az.Accounts'
+INFO: Loaded Module 'Az.MSGraph'
+Microsoft.CognitiveServices/accounts
+Microsoft.CognitiveServices/accounts/projects
+INFO: Loaded Module 'Az.Storage'
+INFO: Loaded Module 'Az.Compute'
+INFO: Loaded Module 'Az.Accounts'
+INFO: Loaded Module 'Az.Websites'
+WARNING: The names of some imported commands from the module 'Microsoft.Azure.PowerShell.Cmdlets.Network' include unapproved verbs that might make them less discoverable. To find the commands with unapproved verbs, run the Import-Module command again with the Verbose parameter. For a list of approved verbs, type Get-Verb.
+INFO: Loaded Module 'Az.ContainerRegistry'
+INFO: Loaded Module 'Az.KeyVault'
+INFO: Loaded Module 'Az.EventHub'
+
+
