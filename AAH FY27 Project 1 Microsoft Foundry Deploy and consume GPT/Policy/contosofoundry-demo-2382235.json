@@ -1,32 +1,25 @@
+ 
 {
   "if": {
     "anyOf": [
       {
         "not": {
           "anyOf": [
-            {
-              "field": "type",
-              "like": "Microsoft.CognitiveServices/accounts/*"
-            },
-            {
-              "field": "type",
-              "like": "Microsoft.CognitiveServices/accounts/projects/*"
-            },
-            {
-              "field": "type",
-              "like": "Microsoft.Resources/deployments/*"
-            },
-            {
-              "field": "type",
-              "like": "Microsoft.Resources/subscriptions/resourceGroups/*"
-            },
+            { "field": "type", "like": "Microsoft.CognitiveServices/accounts/*" },
+            { "field": "type", "like": "Microsoft.CognitiveServices/accounts/projects/*" },
+            { "field": "type", "like": "Microsoft.Resources/deployments/*" },
+            { "field": "type", "like": "Microsoft.Resources/subscriptions/resourceGroups/*" },
+            { "field": "type", "like": "Microsoft.Authorization/roleAssignments/*" },
+            { "field": "type", "like": "Microsoft.Authorization/roleDefinitions/*" },
             {
               "field": "type",
               "in": [
                 "Microsoft.CognitiveServices/accounts",
                 "Microsoft.CognitiveServices/accounts/projects",
                 "Microsoft.Resources/deployments",
-                "Microsoft.Resources/subscriptions/resourceGroups"
+                "Microsoft.Resources/subscriptions/resourceGroups",
+                "Microsoft.Authorization/roleAssignments",
+                "Microsoft.Authorization/roleDefinitions"
               ]
             }
           ]
@@ -34,7 +27,6 @@
       }
     ]
   },
-  "then": {
-    "effect": "deny"
-  }
+  "then": { "effect": "deny" }
 }
+ 
