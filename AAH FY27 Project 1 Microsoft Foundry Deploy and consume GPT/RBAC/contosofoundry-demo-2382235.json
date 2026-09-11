@@ -2,21 +2,31 @@
     "Name":  "Spektra Custom RBAC",
     "Id":  null,
     "IsCustom":  true,
-    "Description":  "Spektra Training Custom Role.",
+    "Description":  "Spektra Training Custom Role - merges Spektra custom, Cognitive Services OpenAI User, and Foundry User.",
     "Actions":  [
                     "Microsoft.Authorization/*/read",
+                    "Microsoft.CognitiveServices/*/read",
                     "Microsoft.CognitiveServices/accounts/*",
-                    "Microsoft.CognitiveServices/accounts/projects/*",
+                    "Microsoft.Insights/alertRules/read",
+                    "Microsoft.Insights/diagnosticSettings/read",
+                    "Microsoft.Insights/logDefinitions/read",
+                    "Microsoft.Insights/metricdefinitions/read",
+                    "Microsoft.Insights/metrics/read",
+                    "Microsoft.ResourceHealth/availabilityStatuses/read",
                     "Microsoft.Resources/deployments/*",
-                    "Microsoft.Resources/subscriptions/resourceGroups/*"
+                    "Microsoft.Resources/subscriptions/operationresults/read",
+                    "Microsoft.Resources/subscriptions/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/*",
+                    "Microsoft.Support/*"
                 ],
     "NotActions":  [
 
                    ],
     "DataActions":  [
-                    "Microsoft.CognitiveServices/accounts/OpenAI/*"
+                    "Microsoft.CognitiveServices/*"
                 ],
     "NotDataActions":  [
-
-                   ]
+                    "Microsoft.CognitiveServices/accounts/AIServices/agents/endpoints/UserIdentityImpersonation/action",
+                    "Microsoft.CognitiveServices/accounts/AIServices/fine_tuning_deployments/write"
+                ]
 }
