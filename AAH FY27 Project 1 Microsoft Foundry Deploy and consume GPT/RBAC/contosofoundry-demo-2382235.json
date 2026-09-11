@@ -23,7 +23,9 @@
 
                    ],
     "DataActions":  [
-                    "Microsoft.CognitiveServices/*"
+                    "Microsoft.CognitiveServices/*",
+                    "Microsoft.CognitiveServices/accounts/AIServices/deployments/read",
+                    "Microsoft.CognitiveServices/accounts/AIServices/*"
                 ],
     "NotDataActions":  [
                 ]
