@@ -1,0 +1,88 @@
+Param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $AzureUserName,
+    [string]
+    $AzurePassword,
+    [string]
+    $AzureTenantID,
+    [string]
+    $AzureSubscriptionID,
+    [string]
+    $ODLID,
+    [string]
+    $DeploymentID,
+    [string]
+    $vmAdminUsername,
+    [string]
+    $vmAdminPassword,
+    [string]
+    $trainerUserName,
+    [string]
+    $trainerUserPassword
+)
+ 
+Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension.txt -Append
+[Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
+
+#Import Common Functions
+$path = pwd
+$path=$path.Path
+$commonscriptpath = "$path" + "\cloudlabs-common\cloudlabs-windows-functions.ps1"
+. $commonscriptpath
+ 
+# Run Imported functions from cloudlabs-windows-functions.ps1
+WindowsServerCommon
+
+CreateCredFile $AzureUserName $AzurePassword $AzureTenantID $AzureSubscriptionID $DeploymentID 
+
+Enable-CloudLabsEmbeddedShadow $vmAdminUsername $trainerUserName $trainerUserPassword
+
+InstallVSCode
+
+# DownloadFiles
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/tf/frontier-firm-productivity-workiq-copilot-agents/day-3/logontask-01.ps1", "C:\Packages\logontask-01.ps1")
+ 
+#Enable Autologon
+$AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoAdminLogon" -Value "1" -type String
+Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultUsername" -Value "$($env:ComputerName)\azureuser" -type String  
+Set-ItemProperty -Path $AutoLogonRegPath -Name "DefaultPassword" -Value "$adminPassword" -type String
+Set-ItemProperty -Path $AutoLogonRegPath -Name "AutoLogonCount" -Value "1" -type DWord
+ 
+# Scheduled Task to Run PostConfig.ps1 screen on logon
+$Trigger= New-ScheduledTaskTrigger -AtLogOn
+$User= "$($env:ComputerName)\azureuser"
+$Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe" -Argument "-executionPolicy Unrestricted -File C:\Packages\logontask-01.ps1"
+Register-ScheduledTask -TaskName "logontask" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest -Force
+
+choco install azure-cli -y
+
+sleep 5
+choco upgrade nodejs-lts -y
+
+choco --version
+
+choco upgrade vscode -y
+
+# Python 3.12+ required by the Microsoft Teams SDK (Lab 11).
+# The base image ships Python 3.10.
+sleep 5
+choco install python312 -y
+
+# Dev Tunnel CLI required in Lab 11 Exercise 6.
+# winget is not available on Windows Server 2022, so download directly.
+sleep 5
+New-Item -ItemType Directory -Force -Path "C:\Packages\devtunnel" | Out-Null
+$WebClient.DownloadFile("https://aka.ms/TunnelsCliDownload/win-x64", "C:\Packages\devtunnel\devtunnel.exe")
+
+$machinePath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+if ($machinePath -notlike "*C:\Packages\devtunnel*") {
+    [Environment]::SetEnvironmentVariable("Path", $machinePath + ";C:\Packages\devtunnel", "Machine")
+}
+
+Stop-Transcript
+ 
+Restart-Computer -Force
