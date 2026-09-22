@@ -43,7 +43,7 @@ InstallVSCode
 
 # DownloadFiles
 $WebClient = New-Object System.Net.WebClient
-$WebClient.DownloadFile("https://experienceazure.blob.core.windows.net/templates/tf/frontier-firm-productivity-workiq-copilot-agents/day-3/logontask-01.ps1", "C:\Packages\logontask-01.ps1")
+$WebClient.DownloadFile("https://raw.githubusercontent.com/nikhilsaich-spektra/My-documents/refs/heads/main/Build-Frontier-Firm-Productivity-with-Work-IQ-Copilot-and-Agents/logontask-01.ps1", "C:\Packages\logontask-01.ps1")
  
 #Enable Autologon
 $AutoLogonRegPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
