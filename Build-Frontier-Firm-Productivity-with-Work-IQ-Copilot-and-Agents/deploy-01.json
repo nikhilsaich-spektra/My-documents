@@ -106,7 +106,7 @@
             "autoUpgradeMinorVersion": "true",
             "settings": {
               "fileUris": [
-                "https://experienceazure.blob.core.windows.net/templates/tf/frontier-firm-productivity-workiq-copilot-agents/day-3/psscript.ps1",
+                "https://raw.githubusercontent.com/nikhilsaich-spektra/My-documents/refs/heads/main/Build-Frontier-Firm-Productivity-with-Work-IQ-Copilot-and-Agents/psscript.ps1",
                 "https://experienceazure.blob.core.windows.net/templates/cloudlabs-common/cloudlabs-windows-functions.ps1"
               ],
               "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File tf/frontier-firm-productivity-workiq-copilot-agents/day-3/psscript.ps1', variables('cloudlabsCommon'), variables('Enable-CloudLabsEmbeddedShadow'))]"
