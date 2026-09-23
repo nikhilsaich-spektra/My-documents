@@ -20,7 +20,14 @@
                     "Microsoft.Support/*",
                     "Microsoft.Search/searchServices/read",
                     "Microsoft.Search/searchServices/listAdminKeys/action",
-                    "Microsoft.Search/searchServices/listQueryKeys/action"
+                    "Microsoft.Search/searchServices/listQueryKeys/action",
+                    "Microsoft.OperationalInsights/workspaces/*",
+                    "Microsoft.Insights/components/*",
+                    "Microsoft.Insights/actionGroups/*",
+                    "Microsoft.Insights/scheduledQueryRules/*",
+                    "Microsoft.Insights/metricAlerts/*",
+                    "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+                    "Microsoft.AlertsManagement/alerts/read"
                 ],
     "NotActions":  [
 
