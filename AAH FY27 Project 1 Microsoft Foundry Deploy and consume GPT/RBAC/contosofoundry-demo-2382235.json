@@ -17,7 +17,10 @@
                     "Microsoft.Resources/subscriptions/operationresults/read",
                     "Microsoft.Resources/subscriptions/read",
                     "Microsoft.Resources/subscriptions/resourceGroups/*",
-                    "Microsoft.Support/*"
+                    "Microsoft.Support/*",
+                    "Microsoft.Search/searchServices/read",
+                    "Microsoft.Search/searchServices/listAdminKeys/action",
+                    "Microsoft.Search/searchServices/listQueryKeys/action"
                 ],
     "NotActions":  [
 
