@@ -11,6 +11,8 @@
             { "field": "type", "like": "Microsoft.Resources/subscriptions/resourceGroups/*" },
             { "field": "type", "like": "Microsoft.Authorization/roleAssignments/*" },
             { "field": "type", "like": "Microsoft.Authorization/roleDefinitions/*" },
+            { "field": "type", "like": "Microsoft.OperationalInsights/workspaces/*" },
+            { "field": "type", "like": "Microsoft.Insights/components/*" },
             {
               "field": "type",
               "in": [
@@ -19,7 +21,13 @@
                 "Microsoft.Resources/deployments",
                 "Microsoft.Resources/subscriptions/resourceGroups",
                 "Microsoft.Authorization/roleAssignments",
-                "Microsoft.Authorization/roleDefinitions"
+                "Microsoft.Authorization/roleDefinitions",
+                "Microsoft.OperationalInsights/workspaces",
+                "Microsoft.Insights/components",
+                "Microsoft.Insights/actionGroups",
+                "Microsoft.Insights/scheduledQueryRules",
+                "Microsoft.Insights/metricAlerts",
+                "Microsoft.AlertsManagement/smartDetectorAlertRules"
               ]
             }
           ]
